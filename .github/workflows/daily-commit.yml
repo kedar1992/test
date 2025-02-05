@@ -1,9 +1,9 @@
 name: Daily Commit
 
-# Define the schedule with cron syntax to run once per day at 00:00 UTC
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'  # Runs daily at 00:00 UTC
+  workflow_dispatch:      # Allows manual triggering of the workflow
 
 jobs:
   add-commit:
@@ -24,12 +24,7 @@ jobs:
         git config --global user.email '24ds2000116@ds.study.iitm.ac.in'
         git add .
         git commit -m "Daily automated update"
-        git push
-
-# Note: You might need to set up a personal access token with write permissions
-# and add it as a secret in your repository to allow the action to push changes.
-# For example, you can name the secret `GH_TOKEN` and use it as follows:
-
+    
     - name: Push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
