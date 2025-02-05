@@ -13,9 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Verify repository
+      run: |
+        pwd
+        ls -la
+        git status
+
     - name: Make changes
       run: |
-        # Add your commands here to modify files or update documentation
         echo "Daily update" >> daily_update.txt
 
     - name: Commit changes with email 24ds2000116@ds.study.iitm.ac.in
@@ -24,7 +29,7 @@ jobs:
         git config --global user.email '24ds2000116@ds.study.iitm.ac.in'
         git add .
         git commit -m "Daily automated update"
-    
+
     - name: Push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
