@@ -1,14 +1,13 @@
-name: CI
+name: Sample GitHub Action
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # Change to your branch if needed
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: 24ds2000116@ds.study.iitm.ac.in
         run: echo "Hello, world!"
